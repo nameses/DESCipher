@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DESCipher (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "DESCipher (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

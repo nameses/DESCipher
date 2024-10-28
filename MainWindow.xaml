@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="DESCipher.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DESCipher"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="85*"/>
+            <ColumnDefinition Width="15*"/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,10" Spacing="12" HorizontalAlignment="Left">
+            <TextBlock Text="Key" VerticalAlignment="Center"/>
+            <TextBox Name="KeyTextBox" Width="500px" TextChanging="UpdateInstance_TextChanging"/>
+
+            <TextBlock Text="IV" VerticalAlignment="Center" Margin="20,0,0,0"/>
+            <TextBox Name="IVTextBox" Width="500px" TextChanging="UpdateInstance_TextChanging"/>
+
+            <ComboBox x:Name="CipherChoiceComboBox" Width="200" Header="Select cipher" ItemsSource="{x:Bind ComboBoxItems}"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="1" Text="Original Text" />
+        <TextBox Grid.Row="2" Name="OriginalTextBox" Height="200" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,10" />
+
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" Margin="0,10" Spacing="12" HorizontalAlignment="Right">
+            <Button Name="ClearOriginalText" Click="ClearOriginalText_Click" Content="Clear" Width="120" Height="35" />
+            <Button Name="Encrypt" Click="Encrypt_Click" Content="Encrypt" Width="120" />
+            <Button Name="Decrypt" Click="Decrypt_Click" Content="Decrypt" Width="120" />
+            <Button Name="OpenFile" Click="OpenFile_Click" Content="Open File" Width="120" Height="35" />
+        </StackPanel>
+
+        <TextBlock Grid.Row="3" Text="Processed Text" Margin="0,10"/>
+        <TextBox Grid.Row="4" Name="ProcessedTextBox" IsReadOnly="True" Height="200" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,10"/>
+
+        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Vertical" Margin="0,10" Spacing="12" HorizontalAlignment="Right">
+            <Button Content="Clear" Click="ClearProcessedText_Click" Width="120"/>
+            <Button Content="Save As" Click="SaveAs_Click" Width="120"/>
+        </StackPanel>
+    </Grid>
+</Window>
